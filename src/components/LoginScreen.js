@@ -3,6 +3,7 @@ import { updateUsername, updatePassword } from "../actions";
 import { logIn } from "../actions";
 
 import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom';
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -64,7 +65,7 @@ class LoginScreen extends React.Component {
             />
             <br />
             {this.props.loginMSG !== null ? (
-              <label className='secondary'>{this.props.loginMSG}</label>
+              <label className="secondary">{this.props.loginMSG}</label>
             ) : (
               <div></div>
             )}
@@ -80,8 +81,9 @@ class LoginScreen extends React.Component {
           </form>
         </div>
       );
+    } else {
+      return <Redirect to='/loggedIn' />;
     }
-    return <div>You Are Logged In</div>;
   }
 
   render() {
