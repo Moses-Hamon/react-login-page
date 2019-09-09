@@ -1,10 +1,11 @@
 import React from "react";
+import { Body1, Headline1 } from "@material/react-typography";
 
 const HomeScreen = () => {
   return (
     <div>
-      <h1>Home Screen</h1>
-      <p>This is the homescreen for Simple Login Page</p>
+      <Headline1 >This is the Home Screen</Headline1>
+      <Body1 >This is the homescreen for Simple Login Page</Body1>
     </div>
   );
 };

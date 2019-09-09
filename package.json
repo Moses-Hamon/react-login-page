@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.4.0",
-    "@material-ui/icons": "^4.2.1",
+    "@material/react-button": "^0.15.0",
+    "@material/react-material-icon": "^0.15.0",
+    "@material/react-text-field": "^0.15.0",
+    "@material/react-top-app-bar": "^0.15.0",
+    "@material/react-typography": "^0.15.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",

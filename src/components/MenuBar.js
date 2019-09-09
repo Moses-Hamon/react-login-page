@@ -1,94 +1,50 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logOut } from "../actions";
-
 import { Link } from "react-router-dom";
 
-// Material UI
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import HomeIcon from "@material-ui/icons/HomeRounded";
+import "@material/react-top-app-bar/dist/top-app-bar.css";
+import "@material/react-material-icon/dist/material-icon.css";
 
-//STYLES
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    color: "Secondary"
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
+import TopAppBar, {
+  TopAppBarFixedAdjust,
+  TopAppBarIcon,
+  TopAppBarRow,
+  TopAppBarSection,
+  TopAppBarTitle
+} from "@material/react-top-app-bar";
+import MaterialIcon from "@material/react-material-icon";
 
-// Functional component
-const MenuBar = props => {
-  // Styles
-  const classes = useStyles();
+import { logOut } from "../actions";
 
-  const AdapterLink = React.forwardRef((props, ref) => (
-    <Link innerRef={ref} {...props} />
-  ));
-
-  // Renders Login button
-  const renderLoginButton = () => {
-    if (!props.isLoggedIn) {
-      return (
-        <Button color="inherit" component={AdapterLink} to="/login">
-          Login
-        </Button>
-      );
-    } else {
-      return (
-        <Button color="inherit" onClick={logout}>
-          Logout
-        </Button>
-      );
-    }
-  };
-
-  // Logout Action
-  const logout = () => {
-    props.logOut();
-  };
-
-  // Render Content Function
-  const renderMenuBar = () => {
-    return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-              component={AdapterLink}
-              to="/"
-            >
-              <HomeIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              Simple Login Page
-            </Typography>
-            {renderLoginButton()}
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  };
-
-  return <div>{renderMenuBar()}</div>;
+const MenuBar = (props) => {
+  return (
+    <div>
+      <TopAppBar>
+        <TopAppBarRow>
+          <TopAppBarSection align="start">
+            <TopAppBarIcon navIcon tabIndex={0}>
+              <MaterialIcon
+                hasRipple
+                icon="home"
+                onClick={() => props.history.push('/')}
+              />
+            </TopAppBarIcon>
+            <TopAppBarTitle>Simple Login Page</TopAppBarTitle>
+          </TopAppBarSection>
+          <TopAppBarSection align="end" role="toolbar">
+            <TopAppBarIcon actionItem tabIndex={0}>
+              <Link to="/login">Login</Link>
+            </TopAppBarIcon>
+          </TopAppBarSection>
+        </TopAppBarRow>
+      </TopAppBar>
+      <TopAppBarFixedAdjust />
+    </div>
+  );
 };
 
-const mapStateToProps = state => {
-  return { isLoggedIn: state.user.isLoggedIn };
+const mapStateToProps = ({ auth }) => {
+  return { isLoggedIn: auth.isLoggedIn };
 };
 
 export default connect(

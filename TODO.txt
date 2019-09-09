@@ -1,0 +1,49 @@
+remove console logs
+
+better naming 	- userReducer
+		- authReducer (storing email between screen)  Make sure reducers are doing specifically what they are doing
+
+create forgot password screen (remember email)
+
+
+redux for storing email
+no storing passwords
+
+no grid on the app (will create a template in the furture)
+(no header for not logged in) example.
+
+
+any page linked to the route to have it's own folder. (Pages to be lean) render contect through components. Apply different structure.
+
+Do all the Auth in App.js so that it only has to be done once.
+Google (handling route flow before it happens). - React router documentation.
+
+Only comments on complex logic.
+
+re-routing - onClick - history.push /login 
+
+no functions in the render ( render in the return ).
+
+
+Order of Imports
+Dependencies from 3rd party
+precise
+
+
+
+
+
+1 - remove console logs
+2 - Create forgot password screen (remember email)
+3 - split reducers and rename (authReducer)
+	do not store password
+	also use destructuring for better updating of state using the payload.
+
+remove grid on app (look up templates for react) example (there will be no header for user that is not logged in)
+
+4 - Pages linked to a route will have it's own folder (keep pages lean and build with components.)
+
+5 - figure out auth in App.js so that the use of isLoggedIn is only used once after rendering app.js
+6 - change any rerouting to use the Onclick history.push (wrap the connect method with the router in the export statement)
+7 - clean up comments
+8 - refactor the components using the Google React Components 

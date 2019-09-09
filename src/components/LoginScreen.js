@@ -1,28 +1,13 @@
 import React from "react";
-import { updateUsername, updatePassword } from "../actions";
+import { updateUsername } from "../actions";
 import { logIn } from "../actions";
 
 import { connect } from "react-redux";
-import { Redirect } from 'react-router-dom';
 
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
+import TextField, {Input} from "@material/react-text-field"
+import '@material/react-text-field/dist/text-field.css';
 
 class LoginScreen extends React.Component {
-  styles = makeStyles(theme => ({
-    container: {
-      display: "flex",
-      flexWrap: "wrap"
-    },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1)
-    },
-    button: {
-      margin: theme.spacing(1)
-    }
-  }));
 
   usernameHandler = event => {
     this.props.updateUsername(event.target.value);
@@ -37,69 +22,22 @@ class LoginScreen extends React.Component {
     this.props.logIn(this.props.username, this.props.password);
   };
 
-  renderLogin() {
-    console.log(this.props.isLoggedIn);
-
-    if (!this.props.isLoggedIn) {
-      return (
-        <div>
-          <form autoComplete="off" className={this.styles.container} noValidate>
-            <TextField
-              id="outlined-name"
-              label="Name"
-              className={this.styles.textField}
-              value={this.props.username}
-              onChange={this.usernameHandler}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              id="outlined-password-input"
-              label="Password"
-              onChange={this.passwordHandler}
-              className={this.styles.textField}
-              type="password"
-              autoComplete="current-password"
-              margin="normal"
-              variant="outlined"
-            />
-            <br />
-            {this.props.loginMSG !== null ? (
-              <label className="secondary">{this.props.loginMSG}</label>
-            ) : (
-              <div></div>
-            )}
-            <br />
-            <Button
-              variant="contained"
-              onClick={this.submitHandler}
-              className={this.styles.button}
-              color="primary"
-            >
-              Login
-            </Button>
-          </form>
-        </div>
-      );
-    } else {
-      return <Redirect to='/loggedIn' />;
-    }
-  }
-
+  
   render() {
-    return <div>{this.renderLogin()}</div>;
+    return (
+      <div>
+      <TextField label='Test' ><Input /></TextField>
+      </div>
+    );
   }
 }
 const mapStateToProps = ({ user }) => {
   return {
     username: user.username,
-    password: user.password,
-    isLoggedIn: user.isLoggedIn,
-    loginMSG: user.loginMSG
   };
 };
 
 export default connect(
   mapStateToProps,
-  { updateUsername, updatePassword, logIn }
+  { updateUsername, logIn }
 )(LoginScreen);
