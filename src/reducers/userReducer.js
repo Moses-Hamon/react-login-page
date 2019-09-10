@@ -3,9 +3,11 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, { type, payload }) => {
+  console.log('reducer', payload);
+  
   switch (type) {
-    case "USER_NAME":
-      return { ...state, payload };
+    case "USERNAME":
+      return { ...state, userEmail: payload };
     default:
       return state;
   }

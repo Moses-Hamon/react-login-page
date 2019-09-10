@@ -1,7 +1,7 @@
-export const logIn = (admin, password) => {
+export const logIn = payload => {
     return {
         type: 'LOGIN',
-        payload: { user: admin, password }
+        payload
     };
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import "@material/react-top-app-bar/dist/top-app-bar.css";
 import "@material/react-material-icon/dist/material-icon.css";
@@ -17,6 +17,8 @@ import MaterialIcon from "@material/react-material-icon";
 import { logOut } from "../actions";
 
 const MenuBar = (props) => {
+  console.log('Menubar props:', props );
+  
   return (
     <div>
       <TopAppBar>
@@ -26,7 +28,7 @@ const MenuBar = (props) => {
               <MaterialIcon
                 hasRipple
                 icon="home"
-                onClick={() => props.history.push('/')}
+                onClick={() => <Redirect to="/" />}
               />
             </TopAppBarIcon>
             <TopAppBarTitle>Simple Login Page</TopAppBarTitle>
