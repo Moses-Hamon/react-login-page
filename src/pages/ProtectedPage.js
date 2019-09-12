@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 
 class ProtectedPage extends React.Component {
   render() {
@@ -11,8 +10,5 @@ class ProtectedPage extends React.Component {
   }
 }
 
-const mapStateToProps = ({user}) => {
-  return { isLoggedIn: user.isLoggedIn };
-};
 
-export default connect(mapStateToProps)(ProtectedPage);
+export default ProtectedPage;

@@ -6,12 +6,29 @@ import MenuBar from "./components/MenuBar";
 import LoginScreen from "./pages/LoginScreen";
 import HomeScreen from "./pages/HomeScreen";
 import ProtectedPage from "./pages/ProtectedPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+
+
+
 
 class App extends Component {
-  componentDidMount() {
-    
+  
+  PrivateRoute = ({ component: Component, isUserLoggedIn, ...rest } ) => {
+    return (
+      <Route
+        {...rest}
+        render={props => {
+          return isUserLoggedIn ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to="/login" />
+          )
+        }
+        }
+      />
+    );
   }
-
+ 
   render() {
     return (
       <div>
@@ -20,7 +37,12 @@ class App extends Component {
           <div>
             <Route path="/" exact component={HomeScreen} />
             <Route path="/login" exact component={LoginScreen} />
-            <Route path="/ProtectedPage" exact component={ProtectedPage} />
+            <Route
+              path="/ForgotPasswordPage"
+              exact
+              component={ForgotPasswordPage}
+            />
+            <this.PrivateRoute path="/ProtectedPage" component={ProtectedPage} isUserLoggedIn={this.props.isUserLoggedIn} />
           </div>
         </BrowserRouter>
       </div>

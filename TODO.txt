@@ -39,7 +39,7 @@ precise
 	do not store password
 	also use destructuring for better updating of state using the payload.
 
-remove grid on app (look up templates for react) example (there will be no header for user that is not logged in)
+	remove grid on app (look up templates for react) example (there will be no header for user that is not logged in)
 
 4 - Pages linked to a route will have it's own folder (keep pages lean and build with components.)
 
@@ -47,3 +47,11 @@ remove grid on app (look up templates for react) example (there will be no heade
 6 - change any rerouting to use the Onclick history.push (wrap the connect method with the router in the export statement)
 7 - clean up comments
 8 - refactor the components using the Google React Components 
+
+
+
+Questions.
+
+Best was to implement authentication (do you store all the auth stuff in a separate class to abstract it away?) Or do you do the authentication in the reducers?
+
+

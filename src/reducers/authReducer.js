@@ -2,27 +2,19 @@ const INITIAL_STATE = {
   isLoggedIn: false
 };
 
-const checkUserAndPassword = ({ user, password }) => {
-  return user === "user" && password === "password";
+const checkUserAndPassword = ({ username, password }) => {
+  return username === "user@email.com" && password === "password";
 };
 
-export default (state = INITIAL_STATE, {type, payload}) => {
+export default (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case "LOGIN":
-      if (payload.user === "" || payload.password === "") {
-        return { ...state, loginMSG: "You must fill in both fields" };
-      }
       if (checkUserAndPassword(payload)) {
-        return { ...state, isLoggedIn: true, loginMSG: null };
-      } else {
-        return { ...state, loginMSG: "Incorrect Please try again" };
+        return { ...state, isLoggedIn: true };
       }
+      return state;
     case "LOGOUT":
-      return {
-        ...state,
-        isLoggedIn: false,
-        loginMSG: "You have logged out :)"
-      };
+      return { ...state, isLoggedIn: false };
     default:
       return state;
   }
