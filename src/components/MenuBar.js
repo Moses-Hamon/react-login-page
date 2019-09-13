@@ -34,9 +34,10 @@ const MenuBar = props => {
             <TopAppBarTitle>Simple Login Page</TopAppBarTitle>
           </TopAppBarSection>
           <TopAppBarSection align='start' role='toolbar'>
-            <Button raised onClick={() => props.history.push("/")}>Home</Button>
+            <Button className="MenuBar__Button" raised onClick={() => props.history.push("/")}>Home</Button>
             <Button raised onClick={() => props.history.push("/login")}>Login</Button>
             <Button raised onClick={() => props.history.push("/ProtectedPage")}>Protected</Button>
+            <Button raised onClick={() => props.history.push("/ForgotPasswordPage")}>Forgot Pass</Button>
           </TopAppBarSection>
           <TopAppBarSection align="end" role="toolbar">
             <TopAppBarIcon actionItem tabIndex={0}>

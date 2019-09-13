@@ -11,16 +11,9 @@ export const logOut = () => {
     };
 };
 
-export const updateUsername = username => {
+export const updateUsername = payload => {
     return {
         type: "USERNAME",
-        payload: username
-    };
-};
-
-export const updatePassword = password => {
-    return {
-        type: "PASSWORD",
-        payload: password
+        payload
     };
 };
